@@ -13,10 +13,10 @@ public class Main {
     public static void main(String[] args) {
         userService.createUsersTable();
 
-        userService.saveUser("User1name", "User1lastName", (byte) 20);
-        userService.saveUser("User2name", "User2lastName", (byte) 25);
-        userService.saveUser("User3name", "User3lastName", (byte) 30);
-        userService.saveUser("User4name", "User4lastName", (byte) 35);
+        userService.saveUser("User1_name", "User1_lastName", (byte) 20);
+        userService.saveUser("User2_name", "User2_lastName", (byte) 25);
+        userService.saveUser("User3_name", "User3_lastName", (byte) 30);
+        userService.saveUser("User4_name", "User4_lastName", (byte) 35);
 
         userService.removeUserById(1);
 

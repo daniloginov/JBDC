@@ -17,8 +17,7 @@ public class UserDaoJDBCImpl implements UserDao {
     // Создание таблицы для User(ов) – не должно приводить к исключению, если такая таблица уже существует
     public void createUsersTable() {
         try (Statement statement = conn.createStatement()) {
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS users " +
-                    "(id BIGINT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100), last_name VARCHAR(100), age TINYINT)");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS users (id BIGINT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100) NOT NULL , last_name VARCHAR(100) NOT NULL , age TINYINT NOT NULL)");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -61,8 +60,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
         try (ResultSet resultSet = conn.createStatement().executeQuery("SELECT * FROM users")) {
             while(resultSet.next()) {
-                User user = new User(resultSet.getString("name"),
-                        resultSet.getString("last_name"), resultSet.getByte("age"));
+                User user = new User(resultSet.getString("name"), resultSet.getString("last_name"), resultSet.getByte("age"));
                 user.setId(resultSet.getLong("id"));
                 users.add(user);
             }
